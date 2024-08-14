@@ -1,0 +1,24 @@
+﻿@model List<Product>;
+<a asp-action="AddProduct" class="btn btn-success">Add Product</a>
+<partial name="Notification"></partial>
+<br />
+<br/>
+    <div class="d-flex">
+@foreach(var d in Model)
+{
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" width="200" height="200" src="@d.picture" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">@d.pname</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Category : @d.pcat</li>
+    <li class="list-group-item">Price : @d.price</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="btn btn-info">Add To Cart</a>
+  </div>
+</div>
+}
+
+</div>

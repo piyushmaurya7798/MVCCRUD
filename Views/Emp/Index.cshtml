@@ -1,0 +1,54 @@
+﻿@model List<Emp>;
+
+@* <span style="color:green">@TempData["msg"]</span> *@
+<partial name="Notification"></partial>
+@* <span style="color:red">@TempData["msgDel"]</span> *@
+
+<form method="post" class="form-inline my-2 my-lg-0 d-flex flex-row">
+    <input name="Search" class="form-control mr-sm-2 w-25" type="text" placeholder="Search" aria-label="Search">
+    <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
+</form>
+<br/>
+<a asp-controller="Emp" asp-action="AddEmp">
+    <input class="btn btn-info" type="Submit" value="Add New">
+</a>
+<br/>
+@{
+    Html.BeginForm("BatchDelete", "Emp", FormMethod.Post, new { name = "tableForm" });
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var d in Model){
+        <tr>
+            <th scope="row">@d.Id</th>
+            <td>@d.Name</td>
+            <td>@d.Email</td>
+            <td>@d.Salary</td>
+            <td><a asp-controller="Emp" asp-action="DeleteEmp" asp-route-id="@d.Id"><input type="button" value="Delete"/></a>
+                <a asp-controller="Emp" asp-action="UpdateEmp" asp-route-id="@d.Id"><input type="button" value="Edit"/></a></td>
+                <td><input type="checkbox" id="deleteInputs" value="@d.Id" name="deleteInputs"></td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+       @*  <div class="actions">
+            <a href="javascript:(function(){document.tableForm.submit();return void(0);})()">
+                Delete selected books
+            </a>
+        </div> *@
+        <input class="btn btn-outline-danger"  type="submit" value="Delete"/>
+@{
+    Html.EndForm();
+}
