@@ -18,7 +18,7 @@
 }
 
 
-<table class="table">
+<table class="table" id="mytable">
     <thead>
         <tr>
             <th scope="col">ID</th>
@@ -26,6 +26,7 @@
             <th scope="col">Email</th>
             <th scope="col">Salary</th>
             <th scope="col">Action</th>
+            <th scope="col">CheckBox </th>
         </tr>
     </thead>
     <tbody>
@@ -35,14 +36,33 @@
             <td>@d.Name</td>
             <td>@d.Email</td>
             <td>@d.Salary</td>
-            <td><a asp-controller="Emp" asp-action="DeleteEmp" asp-route-id="@d.Id"><input type="button" value="Delete"/></a>
-                <a asp-controller="Emp" asp-action="UpdateEmp" asp-route-id="@d.Id"><input type="button" value="Edit"/></a></td>
+            <td><a asp-controller="Emp" asp-action="DeleteEmp" asp-route-id="@d.Id"><input type="button" class="btn btn-danger" value="Delete"/></a>
+                <a asp-controller="Emp" asp-action="UpdateEmp" asp-route-id="@d.Id"><input type="button" class="btn btn-success" value="Edit"/></a></td>
                 <td><input type="checkbox" id="deleteInputs" value="@d.Id" name="deleteInputs"></td>
         </tr>
         }
     </tbody>
 
 </table>
+
+
+@section scripts{
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.1.4/b-3.1.1/b-html5-3.1.1/b-print-3.1.1/r-3.0.2/datatables.min.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-2.1.4/b-3.1.1/b-html5-3.1.1/b-print-3.1.1/r-3.0.2/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#mytable').DataTable({
+            dom: 'Bftip',
+            buttons: [
+                'copy', 'csv', 'pdf'
+            ]
+        });
+    });
+</script>
+}
        @*  <div class="actions">
             <a href="javascript:(function(){document.tableForm.submit();return void(0);})()">
                 Delete selected books

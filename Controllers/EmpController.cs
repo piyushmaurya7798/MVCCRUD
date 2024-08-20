@@ -83,10 +83,10 @@ namespace MVCCRUD.Controllers
             }
             else
             {
-                var data = db.Emps.Where(a => a.Name.Contains(Search) || a.Email.Contains(Search) || a.Salary.ToString().Contains(Search)).ToList();
+                var data = db.Emps.Where(a => a.Name.Contains(Search) || a.Email.Contains(Search) 
+                            || a.Salary.ToString().Contains(Search)).ToList();
                 return View(data);
             }
         }
-
     }
 }

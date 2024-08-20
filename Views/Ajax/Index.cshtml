@@ -1,0 +1,45 @@
+﻿
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" id="ButtonModal">
+    Add Employee
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
+                <button type="button" class="close" id="closebtn" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="myform">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" name="Name" class="form-control" id="InName" aria-describedby="emailHelp" placeholder="Enter Name">
+                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Email ID</label>
+                        <input type="email" name="email" class="form-control" id="InEmail" placeholder="Enter Email Id">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Salary</label>
+                        <input type="text" name="salary" class="form-control" id="InSalary" placeholder="Salary">
+                    </div>
+                   
+                </form>
+            </div>
+            <div class="modal-footer">
+                @* <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> *@
+                <button type="submit" id="saveBtn" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+@* <input type="submit" id="btn" value="ONCLICK" onclick="fun()" /> *@
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/Demo.js"></script>
